@@ -74,7 +74,7 @@ module Feedzirra
         xml = gz.read
         gz.close
       elsif c.header_str.match(/Content-Encoding: deflate/)
-        xml = Zlib::Deflate.inflate(c.body_str)
+        xml = Zlib::Inflate.inflate(c.body_str)
       else
         xml = c.body_str
       end
